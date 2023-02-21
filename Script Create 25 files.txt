@@ -1,0 +1,78 @@
+Creates 25 empty (0 KB) files. (Hint: Use the touch command.)
+The file names should be <yourName><number>, <yourName><number+1>, <yourName><number+2>, and so on.
+
+
+ touch Lab253.sh
+ sudo chmod 755 Lab253.sh
+ vi Lab253.sh
+-i
+
+#!/bin/bash
+name="Nevzhynska"
+sudo touch $(seq -f "Nevzhynska-%03g.txt" 1 25)
+
+ 
+
+./Lab253.sh
+
+
+____________________________________________________________________
+Create 25 files
+
+
+#!/bin/bash
+
+currentfolder=$HOME/perscholas/learnbash
+fileName="jyothi"
+echo $currentfolder
+cd $currentfolder
+ls | grep "jyothi" | awk '{print substr($0,7)}'
+numbers=($(ls | grep "jyothi" | awk '{print substr($0,7)}'))
+maxNum=${#numbers[@]}
+echo $maxNum
+
+if [ $maxNum == 0 ]; then
+    for (( i=1 ; i<26 ; i++ )); do
+        echo $i
+    done
+fi
+
+_____________________
+Create 25 Files
+
+# /bin/bash
+
+maxnum=`find . -maxdepth 1 -regex "\./$USER[0-9][0-9]*" | sed "s/\.\/$USER//" | sort -nr | head -n 1`
+
+for i in `seq $(($maxnum+1)) $(($maxnum+25))`; do
+   touch $USER$i
+done
+
+____________________________________________________________________
+
+Create 25 files
+
+#!/bin/bash
+
+totalfile=$( ls ~/company/auto | wc -l)
+
+current=$((totalfile))
+ while [ $current -lt $((totalfile + 25)) ];
+do
+        echo $current
+        touch ~/company/auto/auto$((current+1)).txt
+        ((current++))
+done
+
+___________________________________________________________________________________
+
+
+
+
+
+
+
+:wq
+./backup.sh
+ls backup.sh
+
